@@ -3,7 +3,26 @@
 	"package": "q4niel.nomending.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ItemStackMixin"
+		"ItemStackMixin",
+		"screen_handler.AbstractFurnaceScreenHandlerMixin",
+		"screen_handler.BeaconScreenHandlerMixin",
+		"screen_handler.BrewingStandScreenHandlerMixin",
+		"screen_handler.CartographyTableScreenHandlerMixin",
+		"screen_handler.CrafterScreenHandlerMixin",
+		"screen_handler.CraftingScreenHandlerMixin",
+		"screen_handler.EnchantmentScreenHandlerMixin",
+		"screen_handler.ForgingScreenHandlerMixin",
+		"screen_handler.Generic3x3ContainerScreenHandlerMixin",
+		"screen_handler.GenericContainerScreenHandlerMixin",
+		"screen_handler.GrindstoneScreenHandlerMixin",
+		"screen_handler.HopperScreenHandlerMixin",
+		"screen_handler.HorseScreenHandlerMixin",
+		"screen_handler.LecternScreenHandlerMixin",
+		"screen_handler.LoomScreenHandlerMixin",
+		"screen_handler.MerchantScreenHandlerMixin",
+		"screen_handler.PlayerScreenHandlerMixin",
+		"screen_handler.ShulkerBoxScreenHandlerMixin",
+		"screen_handler.StonecutterScreenHandlerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
