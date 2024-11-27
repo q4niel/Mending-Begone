@@ -2,7 +2,9 @@
 	"required": true,
 	"package": "q4niel.nomending.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [],
+	"mixins": [
+		"ItemStackMixin"
+	],
 	"injectors": {
 		"defaultRequire": 1
 	}
