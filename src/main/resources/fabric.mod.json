@@ -3,7 +3,7 @@
 	"id": "nomending",
 	"version": "${version}",
 	"name": "Mending Begone",
-	"description": "Disables Mending",
+	"description": "Well, no more Mending",
 	"authors": [
 		"q4niel"
 	],
