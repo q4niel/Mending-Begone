@@ -4,6 +4,7 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"DrawContextMixin",
+		"ItemEntityMixin",
 		"ItemStackMixin",
 		"screen_handler.AbstractFurnaceScreenHandlerMixin",
 		"screen_handler.BeaconScreenHandlerMixin",
