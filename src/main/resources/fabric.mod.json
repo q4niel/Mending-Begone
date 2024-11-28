@@ -3,7 +3,7 @@
 	"id": "nomending",
 	"version": "${version}",
 	"name": "Mending Begone",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Disables Mending",
 	"authors": [
 		"q4niel"
 	],

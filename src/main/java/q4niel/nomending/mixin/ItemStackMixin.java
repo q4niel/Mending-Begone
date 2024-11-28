@@ -8,6 +8,7 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.ClickType;
+import net.minecraft.util.Rarity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -57,6 +58,30 @@ public class ItemStackMixin {
                 cursorStackReference.get().decrement(1);
                 cir.setReturnValue(true); return;
             }
+        }
+    }
+
+    @Inject (
+            method = "hasGlint()Z",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    void hasGlint(CallbackInfoReturnable<Boolean> cir) {
+        ItemStack self = (ItemStack)(Object)this;
+        if (MendingBegone.IsMendingBook(MendingBegone.ExcludeMending(self), self)) {
+            cir.setReturnValue(Items.BOOK.getDefaultStack().hasGlint());
+        }
+    }
+
+    @Inject (
+            method = "getRarity()Lnet/minecraft/util/Rarity;",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    void getRarity(CallbackInfoReturnable<Rarity> cir) {
+        ItemStack self = (ItemStack)(Object)this;
+        if (MendingBegone.IsMendingBook(MendingBegone.ExcludeMending(self), self)) {
+            cir.setReturnValue(Items.BOOK.getDefaultStack().getRarity());
         }
     }
 }

@@ -3,6 +3,7 @@
 	"package": "q4niel.nomending.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"DrawContextMixin",
 		"ItemStackMixin",
 		"screen_handler.AbstractFurnaceScreenHandlerMixin",
 		"screen_handler.BeaconScreenHandlerMixin",

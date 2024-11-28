@@ -11,7 +11,7 @@ import q4niel.nomending.MendingBegone;
 
 @Mixin(MerchantScreenHandler.class)
 public class MerchantScreenHandlerMixin {
-    @Inject(
+    @Inject (
             method = "quickMove(Lnet/minecraft/entity/player/PlayerEntity;I)Lnet/minecraft/item/ItemStack;",
             at = @At("HEAD")
     )
