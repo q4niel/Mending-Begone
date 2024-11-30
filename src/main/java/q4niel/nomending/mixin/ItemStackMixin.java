@@ -10,6 +10,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Rarity;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -21,23 +22,19 @@ import java.util.ArrayList;
 public class ItemStackMixin {
     final String MENDING = "minecraft:mending";
 
-    @Inject (
-            method = "onClicked(Lnet/minecraft/item/ItemStack;Lnet/minecraft/screen/slot/Slot;Lnet/minecrft/util/ClickType;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/inventory/StackReference;)Z",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    void onClicked(ItemStack stack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference, CallbackInfoReturnable<Boolean> cir) {
+    /**@author q4niel @reason imagine commenting */@Overwrite()
+    public boolean onClicked(ItemStack stack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         ArrayList<Tuple<RegistryEntry<Enchantment>, Integer>> slotEnchants = MendingBegone.ExcludeMending(slot.getStack());
 
         if (!MendingBegone.IsMendingBook(slotEnchants, slot.getStack())) {
             MendingBegone.ApplyEnchants(slot.getStack(), slotEnchants);
-            return;
+            return false;
         }
 
         if (stack.getItem() != Items.BOOK) {
             slot.setStack(new ItemStack(stack.getItem(), stack.getCount()));
             cursorStackReference.set(new ItemStack(Items.BOOK, 1));
-            cir.setReturnValue(true); return;
+            return true;
         }
 
         switch (clickType) {
@@ -45,20 +42,22 @@ public class ItemStackMixin {
                 if (stack.getCount() == stack.getMaxCount()) {
                     slot.setStack(new ItemStack(Items.BOOK, Items.BOOK.getMaxCount()));
                     cursorStackReference.set(new ItemStack(Items.BOOK, 1));
-                    cir.setReturnValue(true); return;
+                    return true;
                 }
 
                 slot.setStack(new ItemStack(Items.BOOK, 1 + stack.getCount()));
                 cursorStackReference.set(new ItemStack(Items.AIR));
-                cir.setReturnValue(true); return;
+                return true;
             }
 
             case ClickType.RIGHT -> {
                 slot.setStack(new ItemStack(Items.BOOK, 2));
                 cursorStackReference.get().decrement(1);
-                cir.setReturnValue(true); return;
+                return true;
             }
         }
+
+        return false;
     }
 
     @Inject (
