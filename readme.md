@@ -10,5 +10,8 @@
     - Obtaining an item with **Mending** will strip the enchantment automatically.
     - **Enchanted Books** with only **Mending** will transform into regular **Books**.
 
+## **Credits**
+- **Art Assets** created by **Max Westerlund**.
+
 ## Feedback
 Found a bug or got some suggestions, head over to [GitHub Issues](https://github.com/q4niel/Mending-Begone/issues).

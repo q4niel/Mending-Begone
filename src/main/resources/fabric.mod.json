@@ -7,7 +7,12 @@
 	"authors": [
 		"q4niel"
 	],
+	"contributors": [
+		"Max Westerlund - Art Assets"
+	],
 	"contact": {
+		"homepage": "https://modrinth.com/mod/mending-begone",
+		"issues": "https://github.com/q4niel/Mending-Begone/issues",
 		"sources": "https://github.com/q4niel/Mending-Begone"
 	},
 	"license": "The Insight License II",
